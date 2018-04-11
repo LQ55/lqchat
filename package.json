@@ -2,15 +2,19 @@
   "name": "lqchat",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:8081/chatserver/",
   "dependencies": {
     "antd": "^3.4.0",
     "axios": "^0.18.0",
+    "jquery": "^3.3.1",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "require": "^2.4.20"
   },
   "scripts": {
     "start": "set PORT=8888 && react-scripts start",
@@ -18,5 +22,11 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:8081//AREASTATE/"
+  "proxy": {
+    "/userController/*": {
+      "target": "http://localhost:8081/chatserver",
+      "secure": false,
+      "changeOrigin": true
+    }
+  }
 }
